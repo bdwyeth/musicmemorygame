@@ -1,0 +1,103 @@
+<style type="text/css">
+  .center-table
+  {
+    margin: 0 auto !important;
+    float: none !important;
+  }
+
+  .btn-default
+  {
+    width:100px !important;
+    height: 100px !important;
+    border-radius: 0 !important;
+    font-size: 2.2em !important;
+  }
+	.green-off
+	{
+		background-color: #006400 !important;
+	}
+	
+	.blue-off
+	{
+		background-color: #0066CC !important;
+	}
+	
+	.red-off
+	{
+		background-color: #CC0000 !important;
+	}
+	
+	.yellow-off
+	{
+		background-color: #CCCC00 !important;
+	}
+	
+	
+	button:active{
+    background:olive;
+	}
+
+
+
+</style>
+<html>
+
+<head>
+  <title>Music Memory Game</title>
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+
+</head>
+
+<body>
+<audio id="soundTrumpet" 	src="http://benjaminwyeth.com/fccsimon/sounds/trumpet.wav"></audio>
+<audio id="soundXylophone" 	src="http://benjaminwyeth.com/fccsimon/sounds/xylophone.wav"></audio>
+<audio id="soundGuitar" 	src="http://benjaminwyeth.com/fccsimon/sounds/guitar.wav"></audio>
+<audio id="soundBongo"	 	src="http://benjaminwyeth.com/fccsimon/sounds/bongo.wav"></audio>
+	
+  <div class="container">
+    <div class="header clearfix">
+      <h3 class="text-muted">Music Memory Game</h3><br>
+		<br>
+    </div>
+
+		<div class="text-center">
+		  <table class="center-table">
+
+			<tr>
+				
+			  <td><button class="btn btn-default btn-block green-off green-on" id="trumpet"><img src="http://benjaminwyeth.com/fccsimon/icon/trumpet.svg"></button></td>
+			  <td><button class="btn btn-default btn-block blue-off blue-on" id="xylophone"><img src="http://benjaminwyeth.com/fccsimon/icon/xylophone.svg"></button></td>
+
+			</tr>
+			<tr>
+			  <td><button class="btn btn-default btn-block red-off red-on" id="guitar"><img src="http://benjaminwyeth.com/fccsimon/icon/guitar.svg"></button></td>
+			  <td><button class="btn btn-default btn-block yellow-off yellow-on" id="bongo"><img src="http://benjaminwyeth.com/fccsimon/icon/bongo.svg"></button></td>
+
+			</tr>
+
+		  </table>
+				<br>
+
+		</div>
+
+
+
+    <footer class="footer" id = 'footerTest'>
+      <p>Ben Wyeth 2016</p>
+    </footer>
+
+  </div>
+  <!-- /container -->
+
+
+
+</body>
+
+</html>
