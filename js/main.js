@@ -1,5 +1,5 @@
-var pattern = [],
-maxCycle = 20,
+//global object for colors and audio and gameState
+var maxLevel = 5,
 audio = {
   trumpet   : { sound: new Audio("http://benjaminwyeth.com/fccsimon/sounds/trumpet.wav"),
                 onColor: '#00FF00'},
@@ -9,56 +9,101 @@ audio = {
                 onColor: '#FF0000'},
   bongo     : { sound: new Audio("http://benjaminwyeth.com/fccsimon/sounds/bongo.wav"),
                 onColor: '#FFFF00'}
+},
+
+gameState = {
+  pattern : instrumentList(maxLevel),
+  playerInputArray : [],
+  playerInputLevel : 1 //initial level = 1
 };
 
-console.log(audio);
-
-for(var i = 0; i < maxCycle; i++){
-    var randomInt = getRandomInt(0,3)
-    pattern.push(Object.keys(audio)[randomInt]);
-};
-
-$(document).ready(function() {
-
+$(document).ready(function(){
 
   $("#trumpet").click(function() {
-    audio.trumpet.sound.play();
+    clickedInstruments(this.id);
   });
 
   $("#xylophone").click(function() {
-    audio.xylophone.sound.play();
+    clickedInstruments(this.id);
   });
 
   $("#guitar").click(function() {
-    audio.guitar.sound.play();
+    clickedInstruments(this.id);
   });
 
   $("#bongo").click(function() {
-    audio.bongo.sound.play();
+    clickedInstruments(this.id);
   });
 
-  $("#button-start").click(function() {
-    this.style.backgroundColor = this.style.backgroundColor == 'blue' ? 'red' : 'blue';
+  $("#button-startGame").click(function() {
+    startPlayback(gameState.playerInputLevel);
+    document.getElementById("levelCount").value = gameState.playerInputLevel;
+    document.getElementById("bongo").disabled = false;
+    document.getElementById("guitar").disabled = false;
+    document.getElementById("xylophone").disabled = false;
+    document.getElementById("trumpet").disabled = false;
   });
 
-  $("#button-random").click(function() {
-
-
-    for (i = 0; i < pattern.length; ++i) {
-      setDelay(i);
-    }
-
-    function setDelay(i) {
-      setTimeout(function(){
-        $('#'+pattern[i]).effect("highlight", {color:audio[pattern[i]].onColor}, 1000);
-        playInstrument(audio[pattern[i]].sound);
-      }, 1110*i);
-    }
-
+  $("#button-strict").click(function() {
+    alert('strict');
   });
 
 });
 
+//main function
+
+function generalFunction(){
+  console.log(gameState.playerInputArray, gameState.pattern);
+  if(checkPattern()){console.log('true');}
+}
+
+
+function gameAdvancer(){
+
+
+}
+
+
+
+
+function checkPattern(){
+  function checkArrayEqual(element,index){
+    return element === gameState.pattern[index];
+  }
+  return gameState.playerInputArray.every(checkArrayEqual);
+}
+
+
+
+function clickedInstruments(inputInstrument){
+  playInstrument(audio[inputInstrument].sound);
+  $('#'+inputInstrument).effect("highlight", {color:audio[inputInstrument].onColor}, 1000);
+  gameState.playerInputArray.push(inputInstrument);
+  generalFunction();
+}
+
+function instrumentList(instrumentLength){
+  var x =[];
+  for(var i = 0; i < instrumentLength; i++){
+      var randomInt = getRandomInt(0,3)
+      x.push(Object.keys(audio)[randomInt]);
+  };
+  return x;
+};
+
+
+function startPlayback(level){
+  console.log(gameState.pattern);
+  for (i = 0; i < level; ++i) {
+    setDelay(i);
+  }
+  function setDelay(i) {
+    setTimeout(function(){
+      $('#'+gameState.pattern[i]).effect("highlight", {color:audio[gameState.pattern[i]].onColor}, 1000);
+      playInstrument(audio[gameState.pattern[i]].sound);
+    }, 1110*i);
+    }
+};
 
 
 function getRandomInt(min, max) {
