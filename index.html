@@ -1,4 +1,10 @@
 <style type="text/css">
+  .toggle-button { background-color: white; margin: 5px 0; border-radius: 20px; border: 2px solid #D0D0D0; height: 24px; cursor: pointer; width: 50px; position: relative; display: inline-block; user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; }
+  .toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: 0; border-radius: 100%; width: 30px; height: 30px; background-color: white; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
+  .toggle-button-selected { background-color: #83B152; border: 2px solid #7DA652; }
+  .toggle-button-selected button { left: 26px; top: 0; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
+
+
   .center-table{
     margin: 0 auto ;
     float: none ;
@@ -28,6 +34,7 @@
     width:50px;
     text-align:center;
     outline:none !important;
+    background-color: #800080;
 
   }
 
@@ -60,7 +67,7 @@
 	}
 	.red-off
 	{
-		background-color: #CC0000;
+		background-color: #CC0033;
     outline:none !important;
 	}
 	.yellow-off
@@ -112,7 +119,7 @@
   	line-height: 18.5714px;
   }
 
-  .doit {
+  .background-record {
       background: url(http://benjaminwyeth.com/fccsimon/backgrounds/bg4.svg) no-repeat center;
       background-size:cover;
   }
@@ -126,14 +133,14 @@
   <link href="http://benjaminwyeth.com/fccsimon/icon/favicon.ico" rel="icon" type="image/x-icon" />
   <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
   <script src="js/main.js"></script>
 
 </head>
 
 <body>
 
-  <div class="container doit ">
+  <div class="container background-record ">
     <div class="header clearfix ">
       <br><br><br><br>
       <h1 class="text-muted">Music Memory Game</h3>
@@ -150,9 +157,9 @@
       </tr>
       <tr>
         <td class = 'table-padding'>
-          <input type="text" class="center-textbox" value = 'Count' id = 'levelCount' disabled="disabled">
-          <button type="button" class = 'middle-padding middleButtons' id='button-startGame'>Start</button>
-          <button type="button" class = 'middle-padding middleButtons' id='button-strict'>Strict</button>
+          <input type="text" class="center-textbox" value = 'OFF' id = 'levelCount' disabled="disabled">
+          <button type="button" class = 'toggle-button' id='button-startGame'>Start</button>
+          <button type="button" class = 'toggle-button' id='button-strict'>Strict</button>
         </td>
       </tr>
 			<tr>
